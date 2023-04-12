@@ -1,6 +1,6 @@
 # Scripty
 
-### A Script server much built on the foundation of creating CI/CD piplines.
+### A Script server built on the foundation of creating CI/CD piplines.
 
 Every script is executed in isolation unless you specifically create a dependency towards another script, in that case they coexist in the same context.
 
