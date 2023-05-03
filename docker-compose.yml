@@ -1,0 +1,30 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5433:5432
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - api-data
+  api :
+    image: api:0.9
+    ports:
+      - 443:8443
+    restart: always
+    depends_on:
+      - postgres      
+    networks:
+      - api-data  
+networks:
+  api-data:
+    driver: bridge
+
+volumes:
+  data:
