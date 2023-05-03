@@ -1,0 +1,28 @@
+.title{
+    margin: 0 0 30px 0;
+}
+
+.arguments {
+    margin: 50px 0 50px 0;
+}
+
+.arguments-title {
+     display: flex;
+}
+
+.arguments-title h4{
+    margin: 0 10px 0 0;
+}
+
+.details-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-buttons {
+    display: flex;
+}
+
+.details-buttons .action-subtile-button{
+    margin: 0 10px 0 0;
+}

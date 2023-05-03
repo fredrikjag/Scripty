@@ -1,0 +1,12 @@
+.content-wrapper {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+
+.content {
+    padding: 60px 5%;
+    height: calc(100% - 25px);
+    overflow: auto;
+}
