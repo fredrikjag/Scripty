@@ -1,9 +1,12 @@
 
 .action-button {
+    height: fit-content;
+
     padding: 5px 10px;
     background: var(--primary);
     border-radius: 15px;
 
+    font-weight: 500;
     font-size: 0.9rem;
     color: var(--secondary);
 }
@@ -11,17 +14,18 @@
 .action-button:hover {
     background: var(--primary-invert);
     color: var(--primary);
+
+    cursor: pointer;
 }
 
 .action-subtile-button {
+    height: fit-content;
+
     padding: 5px 10px;
     background: var(--primary-invert);
     border-radius: 15px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    font-weight: 500;
     font-size: 0.9rem;
     color: var(--primary);
 }
@@ -29,6 +33,11 @@
 
 .action-subtile-button:hover {
     background: var(--primary);
-    color: var(--primary-invert);
+    color: var(--secondary);
+
+    cursor: pointer;
 }
 
+.primpary-upload {
+
+}
