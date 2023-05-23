@@ -1,36 +1,39 @@
-       /* Side navigation styling */
-       .side-nav {
-        flex: 0.01 0.01 260px;
-        padding: 80px 0 0 60px;
-        background: #FFF;
-        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);
-    }
+/* Side navigation styling */
+.side-nav {
+    flex: 0.01 0.01 260px;
+    padding: 80px 0 0 60px;
+    background: #FFF;
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .side-nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    .side-nav li {
-        margin: 10px 0;
-    }
+.side-nav li {
+    margin: 10px 0;
+}
 
-    .side-nav li {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        color: #000;
-        box-sizing: border-box;
-    }
+.side-nav li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #000;
+    box-sizing: border-box;
+}
 
-    .side-nav a {
-        color: #000;
-        text-decoration: none;
-        margin: 0 0 0 10px;
-    }
+.side-nav a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 0 0 10px;
+    transition: margin 0.5s;
+}
 
-    .side-nav a:hover {
-        color: #484B94;
-    }
+.side-nav a:hover {
+    color: #484B94;
+    margin: 0 0 0 20px;
+    transition: margin 0.5s;
+}

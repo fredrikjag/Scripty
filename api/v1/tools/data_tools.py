@@ -16,7 +16,7 @@ def get_sql_env():
 
 def get_app_env():
     load_dotenv()
-    env_app_secret = os.getenv('jwt_password')
+    env_app_secret = os.getenv('jwt_key')
     return env_app_secret
 
 # Generates UUID

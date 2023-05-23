@@ -2,6 +2,7 @@ from tools.data_tools import get_hash, verify_password
 from flask import jsonify, request, make_response, Blueprint
 from flask_jwt_extended import create_access_token
 
+
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['POST'])

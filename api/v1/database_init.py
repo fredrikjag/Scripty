@@ -1,7 +1,8 @@
-import tools.data_tools as data_tools
+from tools import data_tools
 import psycopg2
 
 env_host, env_port, env_database, env_user, env_password = data_tools.get_sql_env()
+
 # Connect to the PostgreSQL database
 with psycopg2.connect(
     host=env_host,

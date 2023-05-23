@@ -4,6 +4,7 @@ from models.script import Script
 from flask import jsonify, request, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import datetime
+import os 
 
 script = Blueprint('script', __name__)
 
@@ -68,3 +69,23 @@ def delete_script(script_id):
     db.session.delete(script)
     db.session.commit()
     return jsonify({'message': 'Script deleted successfully!'})
+
+
+
+##### Script upload
+
+
+@script.route('/script/upload', methods=['POST'])
+@jwt_required()
+def script_upload():
+    if 'file' not in request.files:
+        return jsonify({'No file part in the request'}), 400
+
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'message': 'No selected file'}), 400
+
+    upload_directory = './files'
+    file.save(os.path.join(upload_directory, file.filename))
+
+    return jsonify({'message': 'File uploaded successfully'})

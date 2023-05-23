@@ -3,7 +3,7 @@ FROM python:alpine3.17
 WORKDIR /python-docker
 
 COPY requirements.txt requirements.txt
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 RUN pip3 install flask \
     flask_talisman \
@@ -11,10 +11,14 @@ RUN pip3 install flask \
     flask_wtf \ 
     wtforms \
     wtforms.validators \
-    psycopg2-binary
+    psycopg2-binary \
+    flask_sqlalchemy \
+    flask_jwt_extended \
+    python_dotenv
+    
 
 EXPOSE 8443
 
-COPY ./v1 .
+COPY . .
 
-CMD [ "python3", "main.py"]
+CMD [ "python3", "app.py"]

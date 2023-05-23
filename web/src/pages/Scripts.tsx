@@ -2,7 +2,8 @@ import { ReactElement, useEffect, useState } from 'react';
 import Script from '../components/Script';
 import styles from '../assets/styles/scripts.module.css';
 import buttonStyles from '../assets/styles/buttons.module.css';
-import { Link, useNavigate  } from 'react-router-dom'
+import { useNavigate  } from 'react-router-dom'
+import axios from 'axios';
 
 type ScriptProps = {
   script_id: string,
@@ -15,26 +16,36 @@ type ScriptProps = {
   version: string
 }
 
-const API_URL = 'http://127.0.0.1:5000/api/v1/d/script';
-
 const Scripts = (): ReactElement => {
 
-  const [ScriptList, setScriptList] = useState<ScriptProps[]>();
+  const [ScriptList, setScriptList] = useState<ScriptProps[]>([]);
+  const navigate = useNavigate()
+
+  const API_URL = 'http://127.0.0.1:5000/api/v1/d/script';
+  const accessToken = localStorage.getItem('accessToken');
+  axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
   useEffect(() => {
-    const ScriptGetter = async () => {
+    const getScripts = async () => {
       try {
-        const response = await fetch(API_URL);
-        const listItems = await response.json();
-        setScriptList(listItems)
-      } catch (err) {
-        console.log(err);
+        const response = await axios.get(API_URL);
+        if (response.status !== 200) {
+          navigate('/')
+        }
+        const listItems = response.data.scripts;
+          if (Array.isArray(listItems)) {
+            setScriptList(listItems);
+          } else {
+            console.error('Invalid response data:', response.data);
+            setScriptList([]);
+          }
+      } catch (error) {
+        //console.error('Error:', error);
       }
     };
-    ScriptGetter();
-  }, []);
 
-  const navigate = useNavigate()
+    getScripts();
+  }, []);
 
   return (
     <>
