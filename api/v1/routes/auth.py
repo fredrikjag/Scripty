@@ -11,10 +11,12 @@ def login():
     username = data['username']
     password = data['password']
 
-    password_hash, salt, user_id  = get_hash(username)
+    password_hash, salt, user_id, user = get_hash(username)
     result = verify_password(password, password_hash, salt)
 
+    additional_claims = {"user": user}
+
     if result == True:
-        access_token = create_access_token(identity=user_id)
+        access_token = create_access_token(identity=user_id, additional_claims=additional_claims)
         return jsonify({'access_token': access_token}), 200
     return make_response('Bad login!', 200)

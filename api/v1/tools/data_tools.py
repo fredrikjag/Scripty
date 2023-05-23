@@ -46,10 +46,10 @@ def get_hash(username):
     ) as conn: 
         with conn.cursor() as cur:
             cur.execute('''
-                SELECT password, salt, user_id FROM Users WHERE username = %s; 
+                SELECT password, salt, user_id, username FROM Users WHERE username = %s; 
             ''',(username,))
-            password_hash, salt, user_id = cur.fetchone()
-    return password_hash, salt, user_id
+            password_hash, salt, user_id, user = cur.fetchone()
+    return password_hash, salt, user_id, user
 
 
 if __name__ == "__main__":
